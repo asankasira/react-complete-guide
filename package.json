@@ -44,5 +44,8 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@svgr/webpack": "^7.0.0",
     "webpack": "^5.78.0"
+  },
+  "overrides": {
+    "react-refresh": "0.12.0"
   }
 }
