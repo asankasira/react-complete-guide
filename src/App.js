@@ -42,14 +42,10 @@ const App = () => {
         console.log(newExp)
     }
 
-    const addExpFilterHandler = (year) => {
-        setExpList(year ? expenses.filter(e => e.date.getFullYear() === year) : expenses)
-    }
-
     return (
         <div>
             <NewExpenses onAddExpense = {addExpenseHandler}/>
-            <Expenses onYearFilter={addExpFilterHandler} expenses={expList}/>
+            <Expenses expenses={expList}/>
         </div>
     );
 }
