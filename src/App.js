@@ -28,6 +28,12 @@ const expenses = [
         amount: 450,
         date: new Date(2021, 5, 12),
     },
+    {
+        id: 'e5',
+        title: 'Washing Machine',
+        amount: 499.99,
+        date: new Date(2020, 3, 9),
+    },
 ];
 const App = () => {
 
@@ -39,7 +45,6 @@ const App = () => {
             expenses.unshift(newExp);
             return arr;
         });
-        console.log(newExp)
     }
 
     return (
