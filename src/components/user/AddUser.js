@@ -6,14 +6,14 @@ import ErrorModal from "../ui/ErrorModal";
 
 const AddUser = (props) => {
     //Usage of refs with uncontrolled elements
-    const userForm = useRef(null);
+    const userFormRef = useRef(null);
     const [error, setError] = useState(null);
 
     const addFormSubmitHandler = (e) => {
         e.preventDefault();
 
-        const userNameInput = userForm.current.querySelector("#userName");
-        const userAgeInput = userForm.current.querySelector("#age");
+        const userNameInput = userFormRef.current.querySelector("#userName");
+        const userAgeInput = userFormRef.current.querySelector("#age");
 
         if (!userNameInput.value.trim() || !userAgeInput.value.trim()) {
             setError({title: "Invalid Inputs", message: "User Name and Age cannot be empty"})
@@ -25,7 +25,7 @@ const AddUser = (props) => {
         }
 
         props.onRegisterUser(userNameInput.value, userAgeInput.value);
-        userForm.current.reset();
+        userFormRef.current.reset();
     }
 
     const addErrorHandler = () => setError(null);
@@ -34,7 +34,7 @@ const AddUser = (props) => {
         <>
             {error && <ErrorModal {...error} onAcknowledge={addErrorHandler}/>}
             <Card className={styles.input}>
-                <form onSubmit={addFormSubmitHandler} ref={userForm}>
+                <form onSubmit={addFormSubmitHandler} ref={userFormRef}>
                     <label htmlFor={"userName"}>User Name</label>
                     <input id={"userName"} type={"text"} />
 
