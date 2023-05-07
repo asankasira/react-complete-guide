@@ -33,8 +33,9 @@ const cartReducer = (state, action) => {
                 prevItem = {...prevItem, amount: prevItem.amount - 1}
                 updatedItems[prevItemIndex] = prevItem;
             }
-            return {items: updatedItems, totalAmount: (state.totalAmount - prevItem.price)}
+            return {items: updatedItems, totalAmount: (state.totalAmount - prevItem.price)};
 
+        case 'CLEAR':
         default:
             return initialCartState;
     }
@@ -51,11 +52,14 @@ export const CartProvider = (props) => {
         dispatchCartAction({type: 'REMOVE', id})
     };
 
+    const clearCartItems = () => dispatchCartAction({type: 'CLEAR'});
+
     const cartCtx = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addCartItemHandler,
-        removeItem: removeCartItemHandler
+        removeItem: removeCartItemHandler,
+        clearItems: clearCartItems
     }
 
     return (
