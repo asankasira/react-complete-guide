@@ -1,14 +1,16 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Home} from "./pages/home";
-import {Events, fetchEvents} from "./pages/events";
+import {Events, action as fetchEvents} from "./pages/events";
 import {EventDetails, loader as eventDetailsLoader} from "./pages/event-details";
 import {NewEvent} from "./pages/new-event";
 import {action as deleteEventAction} from "./components/EventItem";
 import {action as upsertEventAction} from "./components/EventForm";
+import {action as newsletterAction} from "./pages/news-letter-page";
 import {EditEvent} from "./pages/edit-event";
 import {RootLayout} from "./pages/root-layout";
 import {EventLayout} from "./pages/event-layout";
 import {ErrorPage} from "./pages/error-page";
+import {NewsLetterPage} from "./pages/news-letter-page";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +35,11 @@ const router = createBrowserRouter([
                         ]
                     }
                 ]
+            },
+            {
+                path: 'newsletter',
+                element: <NewsLetterPage/>,
+                action: newsletterAction,
             },
         ]
     }
